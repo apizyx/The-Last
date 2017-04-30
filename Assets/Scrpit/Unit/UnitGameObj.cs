@@ -13,15 +13,6 @@ public class UnitGameObj : DynamicSceneObj
     /// </summary>
     protected MoveAttr moveIns;
 
-    /// <summary>
-    /// 技能发射点
-    /// </summary>
-    public Vector3 SkillFirePosition;
-
-    public GameObject prefab;
-
-
-    public Vector3 biuDirection;
     // Use this for initialization
     void Start () {
         //direction = new Vector3();
@@ -33,30 +24,18 @@ public class UnitGameObj : DynamicSceneObj
         // 临时
         float speed = 0.05f;
         moveIns.Reset( GetMoveDirection(), speed);
-        SkillFirePosition = this.transform.position + this.transform.forward * 4;
-        if(Input.GetKey(KeyCode.Q))
-        {
-            GameObject biu = Instantiate(prefab);
-
-            biu.transform.forward = this.transform.forward;
-            biu.transform.position = SkillFirePosition;
-        }
-
     }
 
     // 获得移动方向
     public Vector3 GetMoveDirection()
     {
         Vector3 directionVec = Vector3.right * Input.GetAxis("Horizontal") + Vector3.forward * Input.GetAxis("Vertical");
-        if (directionVec.sqrMagnitude > 0.5)
-            directionVec = directionVec.normalized;
-        else
-            directionVec = Vector3.zero;
-        return directionVec;
+        // 确保数值有效,忽略0向量
+        return directionVec.sqrMagnitude > 0.01f ? directionVec.normalized : directionVec = Vector3.zero;
     }
 
     /// <summary>
-    /// 碰撞函数
+    /// 受到技能(碰撞函数)
     /// </summary>
     /// <param name="e"></param>
     protected override void OnTriggerEnter(Collider e)
