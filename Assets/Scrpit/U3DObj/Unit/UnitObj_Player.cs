@@ -3,27 +3,18 @@ using System.Collections;
 using System;
 
 /// <summary>
-/// 单位游戏对象
+/// 单位U3d对象
 /// </summary>
-public class UnitGameObj : DynamicSceneObj
+public class UnitObj_Player : UnitObj
 {
-    
-    /// <summary>
-    /// 移动属性实例
-    /// </summary>
-    protected MoveAttr moveIns;
 
-    // Use this for initialization
-    void Start () {
-        //direction = new Vector3();
-        moveIns = this.GetComponent<MoveAttr>();
-    }
-	
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    protected override void Update () {
         // 临时
         float speed = 0.05f;
         moveIns.Reset( GetMoveDirection(), speed);
+        hp_UI.nowVal = unit.HP;
+        hp_UI.maxVal = unit.maxHp;
     }
 
     // 获得移动方向
