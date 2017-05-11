@@ -1,23 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿
+using System;
+using System.Collections;
 
-/// <summary>
-/// 
-/// </summary>
-public class TestSkill : DynamicSceneObj
+public class TestSkill : Skill
 {
-    public GameObject modelObj;
-
-    protected override void OnTriggerEnter(Collider e)
+    // Use this for initialization
+    public override void Deal(Unit sourceUnit, Unit[] targetUnitArray, Environment environment = null)
     {
-        if (e.gameObject.tag.CompareTo("DynamicSenceObj") == 0)
-        {
-            modelObj.SetActive(false);
-        }
+        targetUnitArray[0].HP -= 40;
     }
-
 
 }

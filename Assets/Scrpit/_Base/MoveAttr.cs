@@ -14,11 +14,17 @@ public class MoveAttr : MonoBehaviour
         if (direction != Vector3.zero)
         {
             this.transform.position += direction * speed;
-            this.transform.forward = direction;
+            if(modelObj != null)
+                modelObj.transform.forward = direction;
         }
     }
 
     //=====================================================
+    /// <summary>
+    /// 模型物体
+    /// </summary>
+    public GameObject modelObj;
+
     /// <summary>
     /// 方向
     /// </summary>

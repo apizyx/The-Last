@@ -23,12 +23,21 @@ public class SkillFire : DynamicSceneObj
     /// <param name="e"></param>
     protected override void OnTriggerEnter(Collider e)
     {
-        float time = 0.1f;  
         if (e.gameObject.tag.CompareTo("DynamicSenceObj") == 0)
         {
-            modelObj.SetActive(false);
-            Destroy(this.gameObject, time);
+            UnitObj obj = e.GetComponent<UnitObj>();
+            if (obj != null)
+                new TestSkill().Deal(null, new Unit[] { obj.unit });
+
+            Destroy(this.gameObject);
         }
+
+        //float time = 0.1f;  
+        //if (e.gameObject.tag.CompareTo("DynamicSenceObj") == 0)
+        //{
+        //    modelObj.SetActive(false);
+        //    Destroy(this.gameObject, time);
+        //}
     }
 
     // Use this for initialization

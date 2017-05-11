@@ -2,6 +2,9 @@
 using System.Collections;
 using System;
 
+/// <summary>
+/// 
+/// </summary>
 public class Enimy : DynamicSceneObj
 {
     protected override void OnTriggerEnter(Collider e)

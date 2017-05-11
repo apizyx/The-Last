@@ -2,11 +2,11 @@
 using System.Collections;
 
 
-
+//Un 与数据结合接口
 /// <summary>
-/// 技能创建器
+/// 技能对象创建器(U3D)
 /// </summary>
-public class SkillCreate : MonoBehaviour {
+public class SkillObjCreate : MonoBehaviour {
     
     /// <summary>
     /// 技能预制
@@ -29,7 +29,7 @@ public class SkillCreate : MonoBehaviour {
     /// <summary>
     /// 冷却标记
     /// </summary>
-    public bool f_Cold = false;
+    protected bool f_Cold = false;
 
     // Use this for initialization
     void Start () {
@@ -37,7 +37,7 @@ public class SkillCreate : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update (){
         if (!f_Cold)
         {
             if (Input.GetAxis("Skill1") > 0.01f)
